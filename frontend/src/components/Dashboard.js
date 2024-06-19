@@ -50,22 +50,22 @@ const Dashboard = ({ ads, analytics, fetchAds, error }) => {
       {error && <Alert variant="danger">{error}</Alert>}
       <Row>
         <Col md={6}>
-          <h2>Uploaded Images: {ads.length}</h2>
+          <h2>Total Ads Uploaded: {ads.length}</h2>
         </Col>
         <Col md={6}>
-          <h2>Overall Impressions: {impressionCount}</h2>
+          <h2>Total Impressions: {impressionCount}</h2>
         </Col>
       </Row>
       <Row>
         {ads.map((ad) => (
           <Col md={3} key={ad._id} className="mb-4 mt-4">
-            <Card>
+            <Card  style={{height:500}}>
               <Card.Img variant="top" src={`http://13.232.248.165:5000/${ad.image}`} style={{height:200}}/>
               <Card.Body>
                 <Card.Title>{ad.title}</Card.Title>
                 <Card.Text>{ad.description}</Card.Text>
                 <Card.Text>Impressions - {ad.impressions}</Card.Text>
-                <Button variant="primary" onClick={() => handleDeeplinkClick(ad._id, ad.deeplink)}>Go to Link</Button>
+                <Button variant="primary" onClick={() => handleDeeplinkClick(ad._id, ad.deeplink)}>Visit Ad</Button>
               </Card.Body>
             </Card>
           </Col>
