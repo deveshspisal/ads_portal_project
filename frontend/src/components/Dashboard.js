@@ -29,6 +29,11 @@ const Dashboard = ({ ads, analytics, fetchAds, error }) => {
     }
   };
 
+  const logOutUser = () =>{
+    localStorage.removeItem('token');
+    // Redirect to login page or home page
+    window.location.href = '/login';
+  }
   const handleDeeplinkClick = (adId, deeplink) => {
     logImpression(adId);
     const formattedUrl = deeplink.startsWith('http://') || deeplink.startsWith('https://') ? deeplink : `http://${deeplink}`;
@@ -38,8 +43,9 @@ const Dashboard = ({ ads, analytics, fetchAds, error }) => {
   return (
     <Container>
       <Row className='mt-4'> 
-        <Col md={8}><h1 className="my-4">Dashboard</h1></Col>
+        <Col md={6}><h1 className="my-4">Dashboard</h1></Col>
         <Col md={4}><Link to="/upload" className="btn btn-secondary mt-3">Create Ads</Link></Col>
+        <Col md={2}><button  onClick={()=>{logOutUser()}} className="btn btn-secondary mt-3">Logout</button></Col>
       </Row>      
       {error && <Alert variant="danger">{error}</Alert>}
       <Row>
