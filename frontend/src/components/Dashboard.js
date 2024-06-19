@@ -54,7 +54,7 @@ const Dashboard = ({ ads, analytics, fetchAds, error }) => {
         {ads.map((ad) => (
           <Col md={3} key={ad._id} className="mb-4 mt-4">
             <Card>
-              <Card.Img variant="top" src={`http://localhost:5000/${ad.image}`} style={{height:200}}/>
+              <Card.Img variant="top" src={`http://13.232.248.165:5000/${ad.image}`} style={{height:200}}/>
               <Card.Body>
                 <Card.Title>{ad.title}</Card.Title>
                 <Card.Text>{ad.description}</Card.Text>
