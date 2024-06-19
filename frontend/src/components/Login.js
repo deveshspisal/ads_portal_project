@@ -25,6 +25,7 @@ const Login = () => {
 
   return (
     <Container >
+      {error && <Alert variant="danger" className='mt-4'>{error}</Alert>}
       <h1 className="my-4">Login</h1>
       <Form onSubmit={handleSubmit} >
         <Form.Group controlId="formUsername">
@@ -46,8 +47,6 @@ const Login = () => {
             onChange={(e) => setPassword(e.target.value)}
           />
         </Form.Group>
-
-        {error && <Alert variant="danger">{error}</Alert>}
 
         <Button className="mt-3" variant="primary" type="submit">
           Login

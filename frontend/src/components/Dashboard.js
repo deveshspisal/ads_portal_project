@@ -31,7 +31,8 @@ const Dashboard = ({ ads, analytics, fetchAds, error }) => {
 
   const handleDeeplinkClick = (adId, deeplink) => {
     logImpression(adId);
-    window.open(deeplink, '_blank');
+    const formattedUrl = deeplink.startsWith('http://') || deeplink.startsWith('https://') ? deeplink : `http://${deeplink}`;
+    window.open(formattedUrl, '_blank');
   };
 
   return (

@@ -1,7 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
 import { Container, Form, Button, Alert } from 'react-bootstrap';
-import { useHistory } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 
 const UploadAd = ({ fetchAds }) => {
@@ -12,13 +11,17 @@ const UploadAd = ({ fetchAds }) => {
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState('');
-  const history = useHistory();
 
-  useEffect(() => {
-    if (!localStorage.getItem('token')) {
-      history.push('/login');
+  const handleImageChange = (e) => {
+    const file = e.target.files[0];
+    if (file && !file.type.startsWith('image/')) {
+      setError('Please select an image file.');
+      setImage(null);
+    } else {
+      setError('');
+      setImage(file);
     }
-  }, [history]);
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -58,7 +61,6 @@ const UploadAd = ({ fetchAds }) => {
 
   return (
     <Container>
-      <Link to="/dashboard" className="btn btn-secondary mt-3">Go to Dashboard</Link>
       <h1 className="my-4">Upload Ad</h1>
       <Form onSubmit={handleSubmit}>
         <Form.Group controlId="formTitle">
@@ -95,7 +97,7 @@ const UploadAd = ({ fetchAds }) => {
           <Form.Label>Image</Form.Label>
           <Form.Control
             type="file"
-            onChange={(e) => setImage(e.target.files[0])}
+            onChange={handleImageChange}
           />
         </Form.Group>
 
@@ -106,6 +108,7 @@ const UploadAd = ({ fetchAds }) => {
           {loading ? 'Uploading...' : 'Upload Ad'}
         </Button>
       </Form>
+      <Link to="/dashboard" className="btn btn-secondary mt-3">Go to Dashboard</Link>
     </Container>
   );
 };
