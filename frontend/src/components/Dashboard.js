@@ -22,7 +22,7 @@ const Dashboard = ({ ads, analytics, fetchAds, error }) => {
  
   const logImpression = async (adId) => {
     try {
-      await axios.post('http://localhost:5000/api/ads/impression', { adId });
+      await axios.post('http://13.232.248.165:5000/api/ads/impression', { adId });
       fetchAds(); // Fetch ads after logging impression to update state
     } catch (error) {
       console.error('Error logging impression:', error.response ? error.response.data : error.message);

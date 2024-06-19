@@ -43,7 +43,7 @@ const UploadAd = ({ fetchAds }) => {
 
     try {
       const token = localStorage.getItem('token');
-      await axios.post('http://localhost:5000/api/ads/upload', formData, {
+      await axios.post('http://13.232.248.165:5000/api/ads/upload', formData, {
         headers: {
           Authorization: `${token}`,
           'Content-Type': 'multipart/form-data',

@@ -14,7 +14,7 @@ const Login = () => {
     setError('');
 
     try {
-      const response = await axios.post('http://localhost:5000/api/auth/login', { username, password });
+      const response = await axios.post('http://13.232.248.165:5000/api/auth/login', { username, password });
       localStorage.setItem('token', response.data.token);
       history.push('/dashboard');
     } catch (error) {

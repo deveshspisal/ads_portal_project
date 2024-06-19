@@ -14,7 +14,7 @@ const App = () => {
   const fetchAds = async () => {
     const token = localStorage.getItem('token');
     try {
-      const adsResponse = await axios.get('http://localhost:5000/api/ads/ads', {
+      const adsResponse = await axios.get('http://13.232.248.165:5000/api/ads/ads', {
         headers: { Authorization: `${token}` },
       });
       setAds(adsResponse.data);
