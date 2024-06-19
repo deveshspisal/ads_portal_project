@@ -16,7 +16,8 @@ const Login = () => {
     try {
       const response = await axios.post('http://13.232.248.165:5000/api/auth/login', { username, password });
       localStorage.setItem('token', response.data.token);
-      history.push('/dashboard');
+      // history.push('/dashboard');
+      history.push('/login')
     } catch (error) {
       setError('Invalid username or password');
       console.error('Error logging in:', error.response ? error.response.data : error.message);

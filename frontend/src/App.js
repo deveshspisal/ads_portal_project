@@ -32,7 +32,14 @@ const App = () => {
   return (
     <div>
       <Switch>
-        <Route path="/login" component={Login} />
+        
+        <Route path="/login">
+          {localStorage.getItem('token') ? (
+            <Redirect to="/dashboard" />
+          ) : (
+            <Login/>
+          )}
+        </Route>
         <Route path="/dashboard">
           {localStorage.getItem('token') ? (
             <Dashboard ads={ads} fetchAds={fetchAds} error={error} />
